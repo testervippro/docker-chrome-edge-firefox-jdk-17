@@ -9,7 +9,7 @@ ARG CHROME_VERSION=114.0.5735.90
 ARG CHROME_DRIVER_VERSION=114.0.5735.90
 ARG FIREFOX_VERSION=134.0.2
 ARG GECKODRIVER_VERSION=v0.35.0
-ARG EDGE_VERSION=132.0.2957.115
+ARG EDGE_VERSION_DRIVER=132.0.2957.115
 RUN apt-get update -qqy \
 	&& apt-get -qqy install bzip2 libgtk-3-0 libx11-xcb1 libdbus-glib-1-2 libxt6 libasound2 \
 	&& rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
@@ -51,9 +51,8 @@ RUN mkdir -p /opt/chromedriver \
   
 # Install Microsoft Edge WebDriver
 RUN mkdir -p /opt/edgedriver \
-    && curl -sSL "https://msedgedriver.azureedge.net/132.0.2957.115/edgedriver_linux64.zip" -o /tmp/edgedriver.zip \
+    && curl -sSL "https://msedgedriver.azureedge.net/$EDGE_VERSION_DRIVER/edgedriver_linux64.zip" -o /tmp/edgedriver.zip \
     && unzip /tmp/edgedriver.zip -d /opt/edgedriver \
     && rm /tmp/edgedriver.zip \
     && ln -s /opt/edgedriver/edgedriver-linux64/edgedriver /usr/bin/edgedriver
 
-    
