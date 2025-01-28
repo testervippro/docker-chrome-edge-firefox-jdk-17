@@ -10,6 +10,8 @@ RUN apt-get update -qqy \
     libx11-xcb1 \
     libdbus-glib-1-2 \
     libxt6 \
+    xvfb \
+    ffmpeg \
     libnss3 \
     libasound2 \
     && rm -rf /var/lib/apt/lists/*
@@ -86,13 +88,13 @@ RUN apt-get update && apt-get install -y microsoft-edge-stable \
 
     # Verify browser and driver installations
 # Verify browser and driver installations when container runs
-ENTRYPOINT google-chrome --version && \
-    chromedriver --version && \
-    firefox --version && \
-    geckodriver --version && \
-    microsoft-edge --version && \
-    msedgedriver --version && \
-    tail -f /dev/null
+# ENTRYPOINT google-chrome --version && \
+#     chromedriver --version && \
+#     firefox --version && \
+#     geckodriver --version && \
+#     microsoft-edge --version && \
+#     msedgedriver --version && \
+#     tail -f /dev/null
 
 
 # Set default command to a shell (or any other command you prefer)
